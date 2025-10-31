@@ -2,10 +2,33 @@
 *.jlso
 *.ji
 .julia/
+# 환경 파일 (원하면 포함)
+# Project.toml
+# Manifest.toml
+
+# VSCode
 .vscode/
+
+# Jupyter
 .ipynb_checkpoints/
+# 노트북 출력 제거 권장
+
+# 데이터 / 대용량 바이너리
 *.jld2
 data/
 analysis/raw_data/
+analysis/*.jld2
+
+# 이미지/플롯 (원하면 제외하지 말 것)
+*.png
+figures/
+analysis/figure/
+
+# 빌드/캐시/바이너리
+*.o
+*.so
+*.dll
+
+# OS
 Thumbs.db
 .DS_Store
