@@ -1,0 +1,34 @@
+static_suscep_BS_squareTB_(t'=0.0).zip 으로 압축
+    raw_data/suscep_band_structure_$mu_ver2.0
+    # parameters
+    model: squareTB, kdim: 2, Hdim: 2, t: 1.0, t2: 0.0, mu: $mu, Rashba_strength: 0.00
+    soft_eta: 1e-6, hard_eta: 1e-6, kgrid_number: 64, rtol: 1e-6, atol: 1e-8, maxevals: 1e7, T: 0.01
+    N: 64, M\Gamma:128, \GammaX:64, XM:64
+    mu_list = [0.0, 0.01, 0.1, 0.5, 1.0, 2.0, 3.0, 3.9]
+    # save
+    symmetry_path::Vector{Float64}, chi_band_structure::Vector{ComplexF64}
+    # note
+    I add a zero integral ftn with sinusoidal ftn and Gaussian peak and it works well.
+
+(tentaitive)
+    raw_data/static_suscep_BZmap_$mu_64x64.jld2
+    # parameters
+    model: squareTB, kdim: 2, Hdim: 2, t: 1.0, t2: 0.0, mu: $mu, Rashba_strength: 0.00
+    soft_eta: 1e-6, hard_eta: 1e-6, kgrid_number: 64, rtol: 1e-6, atol: 1e-8, maxevals: 1e7, T: 0.01
+    mu_list = [0.0, 0.5, 1.0, 3.0, 3.9]
+    N = 64
+    # save 
+    k_range::LinRange(-π, π, N+1)[1:end-1], chi_BZ_map::Matrix{ComplexF64}
+
+(tentaitive) #Need to be fixed!
+    raw_data/lambda_U_projection_$mu.jld2 (2025-08-19)
+    raw_data/lambda_U_diagonalization_$mu.jld2 (2025-08-19)
+    # parameters
+    model: squareTB, kdim: 2, Hdim: 2, t: 1.0, t2: 0.0, mu: $mu, Rashba_strength: 0.00  #--> μ problem found at 8.21
+    soft_eta: 1e-6, hard_eta: 1e-6, kgrid_number: 64, rtol: 1e-6, atol: 1e-8, maxevals: 1e7, T: 0.01
+    mu_list = [0.0, 0.5, 1.0, 3.0, 3.9]
+    N_urange = 128, U_range = LinRange(0.0, 3.0, N_urange), N = 64 #k_grid_number
+    # save
+    U_range, lambda_diag_U::Vector{Float64} #[a1, a2, ... a_128] 
+    U_range, lambda_gap_U::Vector{Vector{Float64}} #[v1, v2, ... v_128] w/ v1 = [a1, a2, ... a6], 6=length(gap_type_list)
+    # From LGE_$mu.jl. Other than 0.5 is on the server.
