@@ -1,0 +1,11 @@
+# Julia
+*.jlso
+*.ji
+.julia/
+.vscode/
+.ipynb_checkpoints/
+*.jld2
+data/
+analysis/raw_data/
+Thumbs.db
+.DS_Store
